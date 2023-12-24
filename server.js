@@ -52,7 +52,7 @@ async function voteTenTimes(driver) {
       driver,
       "/html/body/div[6]/div[1]/div[3]/div/div[1]/div[1]/div[1]/ul/li[3]/form/div[2]/button"
     );
-    await sleep(1000);
+    await sleep(500);
   }
 }
 
