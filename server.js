@@ -11,18 +11,21 @@ async function clickButton(driver, xpath) {
   await button.click();
 }
 
+async function enterInput(driver, inputName, value) {
+  const inputField = await driver.findElement(By.name(inputName));
+  await inputField.sendKeys(value);
+}
+
 async function login(driver) {
   await clickButton(
     driver,
     "/html/body/div[2]/div[1]/div[2]/ul[2]/li[2]/button"
   );
 
-  let userInput = await driver.findElement(By.name("user"));
-  await userInput.sendKeys(process.env.LOGIN);
+  await enterInput(driver, "user", process.env.LOGIN);
+  await enterInput(driver, "pass", process.env.PASSWORD);
 
-  let passInput = await driver.findElement(By.name("pass"));
-  await passInput.sendKeys(process.env.PASSWORD);
-  await passInput.sendKeys("\n");
+  await enterInput(driver, "pass", "\n");
   await sleep(1000);
 }
 
@@ -46,13 +49,13 @@ async function navigateToFavorites(driver) {
   await sleep(1000);
 }
 
-async function voteTenTimes(driver) {
-  for (let i = 0; i < 10; i++) {
+async function vote(driver) {
+  for (let i = 0; i < 5000; i++) {
     await clickButton(
       driver,
       "/html/body/div[6]/div[1]/div[3]/div/div[1]/div[1]/div[1]/ul/li[3]/form/div[2]/button"
     );
-    await sleep(500);
+    await sleep(800);
   }
 }
 
@@ -64,7 +67,7 @@ async function voteTenTimes(driver) {
   await navigateToDesignPage(driver);
   await scrollToBottom(driver);
   await navigateToFavorites(driver);
-  await voteTenTimes(driver);
+  await vote(driver);
 
   await driver.quit();
 })();
