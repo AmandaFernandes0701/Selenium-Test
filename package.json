@@ -1,0 +1,21 @@
+{
+  "name": "stardoll_vote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Amanda Fernandes Alves",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "edgedriver": "^5.3.9",
+    "selenium-webdriver": "^4.16.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^120.0.1",
+    "mocha": "^10.2.0"
+  }
+}
